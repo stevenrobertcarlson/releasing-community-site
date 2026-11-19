@@ -110,7 +110,9 @@ footer p+p{margin-top:10px}
 
 @media (max-width:760px){
   .hero{padding:44px 0 56px}
-  .hero .wrap,.item,.join .wrap,  .field{max-width:280px;order:-1;justify-self:start}
+  .hero .wrap,.item,.join .wrap{grid-template-columns:minmax(0,1fr);gap:24px}
+  .item{gap:6px}
+  .field{max-width:280px;order:-1;justify-self:start}
   .item{padding:18px 0}
   .find,.steward,.voices,.join{padding-top:56px;padding-bottom:56px}
 }
