@@ -113,6 +113,15 @@ footer p+p{margin-top:10px}
   .item{padding:18px 0}
   .find,.steward,.voices,.join{padding-top:56px;padding-bottom:56px}
 }
+.voices .voice+.voice{margin-top:44px}
+.rot{display:grid}
+.rot .voice,.rot .voice+.voice{grid-area:1/1;margin-top:0;opacity:0;visibility:hidden}
+.rot.anim .voice{transition:opacity .7s ease,visibility .7s}
+.rot .voice.on{opacity:1;visibility:visible}
+.vctl{margin:26px 0 0 30px;padding:4px 0;background:none;border:0;border-bottom:1px solid var(--clay);font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);cursor:pointer}
+.vctl:hover{color:var(--ink);border-color:var(--ink)}
+.vctl:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.rot.anim .voice{transition:none}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
@@ -162,12 +171,30 @@ footer p+p{margin-top:10px}
 
   <section class="voices" aria-labelledby="voices-h">
     <div class="wrap">
-      <h2 id="voices-h" style="position:absolute;left:-999px">From a member</h2>
-      <figure class="voice" style="margin-top:20px">
-        <blockquote><q>Being here has revolutionized my ability to release for myself and others.</q></blockquote>
-        <p>I feel more connected than ever. The community is supportive and caring.</p>
-        <figcaption><cite>Lex A.</cite></figcaption>
-      </figure>
+      <h2 id="voices-h" style="position:absolute;left:-999px">From members</h2>
+      <div class="rotator" id="voices" style="margin-top:20px">
+        <figure class="voice">
+          <blockquote><q>I love the community and being in contact with wonderful people all over the world.</q></blockquote>
+          <figcaption><cite>Anke</cite></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><q>I release so much more often than before I was connected to the community.</q></blockquote>
+          <figcaption><cite>Lex A.</cite></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><q>I love the discussions about the Method, and being connected to so many experienced practitioners.</q></blockquote>
+          <figcaption><cite>Cecile</cite></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><q>My practice is moving forward, and I feel so much more at peace.</q></blockquote>
+          <figcaption><cite>Marlies</cite></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><q>The facilitation practice calls are yummy, and give me a good boost for the week.</q></blockquote>
+          <figcaption><cite>Rita M.</cite></figcaption>
+        </figure>
+      </div>
+      <button type="button" class="vctl" id="vctl" hidden></button>
     </div>
   </section>
 
@@ -268,6 +295,30 @@ footer p+p{margin-top:10px}
   function loop(t){draw(t);requestAnimationFrame(loop);}
   size();window.addEventListener('resize',size);
   if(reduce)draw(0);else requestAnimationFrame(loop);
+})();
+</script>
+<script>
+/* Member voices: one quote at a time, random start. Autoplay pauses on hover or focus and has a Pause control. Reduced motion: manual Next only. All quotes read as plain stacked text without JavaScript. */
+(function(){
+  var r=document.getElementById('voices'),b=document.getElementById('vctl');
+  if(!r||!b)return;
+  var v=[].slice.call(r.querySelectorAll('.voice'));if(v.length<2)return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i=Math.floor(Math.random()*v.length),t=null,paused=false,held=false;
+  r.classList.add('rot');
+  function mark(){v.forEach(function(el,k){var on=k===i;el.classList.toggle('on',on);if(on)el.removeAttribute('aria-hidden');else el.setAttribute('aria-hidden','true');});}
+  function next(){i=(i+1)%v.length;mark();}
+  function stop(){if(t){clearInterval(t);t=null;}}
+  function go(){stop();if(!reduce&&!paused&&!held)t=setInterval(next,9000);}
+  mark();b.hidden=false;setTimeout(function(){r.classList.add('anim');},60);
+  if(reduce){b.textContent='Next quote';b.addEventListener('click',next);return;}
+  b.textContent='Pause';
+  b.addEventListener('click',function(){paused=!paused;b.textContent=paused?'Play':'Pause';go();});
+  r.addEventListener('mouseenter',function(){held=true;go();});
+  r.addEventListener('mouseleave',function(){held=false;go();});
+  r.addEventListener('focusin',function(){held=true;go();});
+  r.addEventListener('focusout',function(){held=false;go();});
+  go();
 })();
 </script>
 </body>
