@@ -51,15 +51,13 @@ a{color:inherit}
 .skip{position:absolute;left:-999px;top:8px;background:var(--sage);color:#fff;padding:10px 16px;border-radius:6px;z-index:10}
 .skip:focus{left:8px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
-.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 section{border-top:1px solid var(--rule)}
 
 /* top bar + hero */
 .bar{padding:18px 0}
-.bar .eyebrow{display:block}
-.hero{border-top:1px solid var(--rule);padding:72px 0 88px}
+.bar .hero{padding:72px 0 88px}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.4rem,5.6vw,4.1rem);font-weight:500;margin:18px 0 26px}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.1rem);font-weight:500;margin:0 0 26px}
 .hero .lede{font-family:var(--serif);font-size:1.3rem;line-height:1.55;color:#4a4a40;max-width:34ch;margin-bottom:34px}
 .btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;border:0;cursor:pointer;background:var(--sage);color:#fff;padding:15px 30px;border-radius:999px;transition:background .15s}
 .btn:hover{background:var(--sage-d)}
@@ -68,7 +66,7 @@ section{border-top:1px solid var(--rule)}
 
 /* find */
 .find{padding:88px 0}
-.find h2,.steward h2,.voices h2,.join h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:12px 0 34px}
+.find h2,.steward h2,.voices h2,.join h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:0 0 34px}
 .item{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:6px 48px;padding:22px 0;border-top:1px solid var(--rule);align-items:baseline}
 .item:last-of-type{border-bottom:1px solid var(--rule)}
 .item h3{font-size:1.45rem;position:relative;padding-left:26px}
@@ -122,12 +120,10 @@ footer p+p{margin-top:10px}
 <body>
 <a class="skip" href="#join">Skip to sign-up</a>
 
-<div class="bar"><div class="wrap"><span class="eyebrow">Releasing Community</span></div></div>
 
 <header class="hero">
   <div class="wrap">
     <div>
-      <p class="eyebrow">A free, peer-based space</p>
       <h1>Welcome to the Releasing Community</h1>
       <p class="lede">An open, coach-led space for emotional release and real-time support, based on the Sedona Method.</p>
       <a class="btn" href="#join">Join the community</a>
@@ -139,7 +135,6 @@ footer p+p{margin-top:10px}
 <main id="main">
   <section class="find" aria-labelledby="find-h">
     <div class="wrap">
-      <p class="eyebrow">What you'll find here</p>
       <h2 id="find-h">Three ways to practice together</h2>
       <div class="item" style="--c:var(--sage)"><h3>Free support calls</h3><p>Live calls with coaches, at no cost.</p></div>
       <div class="item" style="--c:var(--ochre)"><h3>Peer-based 24/7 releasing</h3><p>Ask for a releasing partner at any hour. Peer to peer, for people already trained in the Method.</p></div>
@@ -159,7 +154,6 @@ footer p+p{margin-top:10px}
 
   <section class="steward" aria-labelledby="steward-h">
     <div class="wrap">
-      <p class="eyebrow">Who runs it</p>
       <h2 id="steward-h">A note from me</h2>
       <p>I'm Steven, a certified Sedona Method coach. I started this community so people could support each other in letting go.</p>
       <p>It began in Zoom practice rooms and has grown into a network of WhatsApp groups. It is free, and it will stay free.</p>
@@ -168,7 +162,6 @@ footer p+p{margin-top:10px}
 
   <section class="voices" aria-labelledby="voices-h">
     <div class="wrap">
-      <p class="eyebrow">From a member</p>
       <h2 id="voices-h" style="position:absolute;left:-999px">From a member</h2>
       <figure class="voice" style="margin-top:20px">
         <blockquote><q>Being here has revolutionized my ability to release for myself and others.</q></blockquote>
@@ -181,7 +174,6 @@ footer p+p{margin-top:10px}
   <section class="join" id="join" aria-labelledby="join-h">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Join</p>
         <h2 id="join-h">How to join the Releasing Community</h2>
         <p class="lede">Enter your name and email. It helps keep out spam. You'll get five short orientation emails.</p>
       </div>
